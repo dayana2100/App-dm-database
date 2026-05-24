@@ -258,54 +258,39 @@ docker-compose -f docker-compose.yml down -v
 
 ### Historias de Usuario Completadas
 
-|HU	|Descripción|
-|---|-----------|
-|HU-01	|Docker + Liquibase base (develop)|
-|HU-02	|Configuración QA|
-|HU-03	|Configuración MAIN|
-|HU-04	|Extensions + Schemas|
-|HU-05	|Tablas ROL + EMPLEADO|
-|HU-06	|Tabla CLIENTE|
-|HU-07	|Tablas CATEGORIA, MATERIAL, PRODUCTO|
-|HU-08	|Tabla IMAGEN_PRODUCTO|
-|HU-09	|Tablas PROMOCION, PROMOCION_PRODUCTO|
-|HU-10	|Tablas CARRITO, ITEM_CARRITO|
-|HU-11	|Tablas PEDIDOS|
-|HU-12	|Tablas INVENTARIO|
-|HU-13	|Datos iniciales|
-|HU-14	|Scripts de verificación|
-|HU-15	|Funciones y triggers|
-|HU-16	|Índices de rendimiento|
-|HU-17	|Vistas para reportes|
-|HU-18	|Políticas de seguridad RLS|
-|HU-19	|Documentación|
+| HU       | Nombre                                                                    | Descripción                                                                                                                          |
+| -------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| HU-01 | Habilitar extensión UUID en la base de datos                              | Activación de la extensión UUID para soportar generación de identificadores únicos dentro del sistema.                               |
+| HU-02 | Creación de esquemas de base de datos                                     | Definición de esquemas lógicos para segmentar y organizar los dominios de información de la base de datos.                           |
+| HU-03 | Definición de tipos de datos personalizados                               | Creación de la capa de tipos reutilizables y estructura inicial para tipos personalizados del sistema.                               |
+| HU-04 | Creación completa de tablas base del sistema                              | Implementación de las tablas principales relacionadas con seguridad, clientes, catálogo, promociones, carrito, pedidos e inventario. |
+| HU-05 | Creación de vistas de reporte del sistema                                 | Implementación de vistas SQL para consultas consolidadas y generación de reportes operativos.                                        |
+| HU-06 | Implementación de funciones de actualización de inventario                | Desarrollo de funciones almacenadas encargadas de gestionar la lógica de actualización y control de stock.                           |
+| HU-07 | Implementación de triggers de control de inventario                       | Automatización de procesos de inventario mediante triggers asociados a movimientos y operaciones del sistema.                        |
+| HU-08 | Creación de índices de optimización y rendimiento                         | Implementación de índices para mejorar el rendimiento y optimizar tiempos de respuesta en consultas críticas.                        |
+| HU-09 | Configuración de roles, permisos y políticas de seguridad                 | Configuración de roles, grants y políticas RLS para controlar el acceso y la seguridad de los datos.                                 |
+| HU-10 | Inserción de datos iniciales del sistema                                  | Registro de datos semilla y configuraciones base necesarias para el funcionamiento inicial del sistema.                              |
+| HU-11 | Implementación de scripts de rollback de base de datos                    | Incorporación de scripts de reversión para garantizar recuperación y control ante cambios en la base de datos.                       |
+| HU-12 | Configuración de infraestructura y documentación técnica de base de datos | Integración de contenedorización, scripts operativos, configuración de entorno y documentación técnica del proyecto.                 |
+
 
 ## Flujo de Trabajo con Git
 
-### Crear una nueva HU
+### Crear una nueva HU 
+
+**Ejemplo con develop**
 
 ```bash
 git checkout develop
 git pull origin develop
-git checkout -b HU-DEV-JSA-XX-nombre
+git checkout -b HU-XX-develop-nombre
 # Realizar cambios...
 git add .
-git commit -m "feat: HU-DEV-JSA-XX descripcion"
-git push origin HU-DEV-JSA-XX-nombre
+git commit -m "feat: HU-XX-develop-nombre descripcion"
+git push origin HU-XX-develop-nombre
 # Crear Pull Request a develop
 ```
 
-### Pasar cambios a QA
-
-```bash
-git checkout qa
-git pull origin qa
-git merge develop --no-commit --no-ff
-git checkout qa -- docker-compose.yml
-git add .
-git commit -m "Merge develop into qa: mantener docker-compose.yml"
-git push origin qa
-```
 
 ## Convención de Commits
 
