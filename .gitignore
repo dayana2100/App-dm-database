@@ -1,4 +1,23 @@
+# Docker
+# Docker
+.env
 *.log
+docker-compose.override.yml
+docker-compose.local.yml
+
+# Liquibase - Ya no usamos archivo de propiedades
+liquibase.properties
+liquibase.properties.*
 *.tmp
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Temp files
+.tmp/
